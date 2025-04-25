@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily English Expressions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .company {
+      background: #ffffffaa;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .company h2 {
+      color: #003366;
+      margin-bottom: 5px;
+    }
+    .company p {
+      margin: 4px 0;
+    }
+    .tagline {
+      font-style: italic;
+      color: #005fa3;
+    }
+    h1 {
+      color: #333366;
+      margin-bottom: 15px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px auto;
+      max-width: 350px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .bangla {
+      color: #007a33;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+    .sound-button {
+      margin-top: 10px;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin: 3px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="company">
+    <h2>সুপার সাক্সেস কম্পিউটার এডুকেশন সেন্টার</h2>
+    <p>২২/১ বিপিন পাল রোড, নিমতা শ্যাপ্রসাদ নগর, কোলকাতা-৭০০০৪৯</p>
+    <p>📞 ৮০১৭২৪৭২৯৮ | ৯৮৭৪১৫২০৮০</p>
+    <p class="tagline">"শেখো আজই, গড়ো তোমার ভবিষ্যৎ।"</p>
+  </div>
+
+  <h1>🎓 Daily Used English Expressions</h1>
+
+  <div id="cards"></div>
+
+  <script>
+    const expressions = [
+      ["What’s up?", "কি খবর? / কেমন আছো?"],
+      ["I’m fine.", "আমি ভালো আছি।"],
+      ["Thank you.", "ধন্যবাদ।"],
+      ["You’re welcome.", "তোমাকে স্বাগতম।"],
+      ["Excuse me.", "মাফ করবেন।"],
+      ["I’m sorry.", "আমি দুঃখিত।"],
+      ["Never mind.", "কিছু মনে করো না।"],
+      ["It’s okay.", "ঠিক আছে।"],
+      ["No problem.", "কোনো সমস্যা নেই।"],
+      ["What do you mean?", "তুমি কী বোঝাতে চাও?"],
+      ["I don’t understand.", "আমি বুঝতে পারছি না।"],
+      ["Could you repeat that?", "আপনি কি সেটা আবার বলবেন?"],
+      ["I agree.", "আমি একমত।"],
+      ["That’s right.", "এটা ঠিক।"],
+      ["I don’t know.", "আমি জানি না।"],
+      ["Just a moment.", "এক মুহূর্ত।"],
+      ["Let’s go.", "চল যাই।"],
+      ["I’m coming.", "আমি আসছি।"],
+      ["Be careful.", "সাবধান হও।"],
+      ["See you soon.", "পরে দেখা হবে।"]
+    ];
+
+    const cardsDiv = document.getElementById('cards');
+
+    expressions.forEach(([english, bangla], index) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${index + 1}. ${english}</h3>
+        <p class="bangla">${bangla}</p>
+        <div class="sound-button">
+          <button onclick="speak('${english}', 'en-US')">🔊 English</button>
+          <button onclick="speak('${bangla}', 'bn-IN')">🔊 বাংলা</button>
+        </div>
+      `;
+      cardsDiv.appendChild(card);
+    });
+
+    function speak(text, lang = 'en-US') {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = 0.9;
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>
